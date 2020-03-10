@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button addNewBookBtn, showLibraryBtn;
     EditText bookNameET, bookAuthorET, bookIdET, bookYearET, bookDescriptionET;
+    int counter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +58,23 @@ public class MainActivity extends AppCompatActivity {
                 book.setDescription(bookDescriptionET.getText().toString());
 
                 adapter.addBook(book);
+                counter++;
             }
         });
 
+        showLibraryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(counter >= 3){
+                    startActivity(new Intent(MainActivity.this,Library.class));
+                } else if (counter == 0){
+                    Toast.makeText(MainActivity.this,"No books added", Toast.LENGTH_SHORT).show();
 
-
+                } else {
+                    Toast.makeText(MainActivity.this,"Only " + counter + "/3 books added", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         /*
         JSONObject object = new JSONObject();
