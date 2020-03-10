@@ -11,12 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
         bookList.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
 
-        ArrayList<Book> list = new ArrayList<Book>();
         final BookAdapter adapter = new BookAdapter(list);
 
         bookList.setAdapter(adapter);
@@ -66,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(counter >= 3){
-                    startActivity(new Intent(MainActivity.this,Library.class));
+                    startActivity(new Intent(MainActivity.this, LibraryActivity.class));
                 } else if (counter == 0){
                     Toast.makeText(MainActivity.this,"No books added", Toast.LENGTH_SHORT).show();
 
