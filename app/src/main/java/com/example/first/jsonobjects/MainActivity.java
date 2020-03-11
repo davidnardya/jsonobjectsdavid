@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
         bookList.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
 
+        ArrayList<Book> list = new ArrayList<>();
+
         final BookAdapter adapter = new BookAdapter(list);
 
         bookList.setAdapter(adapter);
